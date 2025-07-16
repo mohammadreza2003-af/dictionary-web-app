@@ -9,6 +9,7 @@ import NotFound from "./not-found";
 import Link from "next/link";
 import { HeartIcon } from "lucide-react";
 import { useEffect } from "react";
+import EmptySearch from "./empty-search";
 
 const WordDetail = () => {
   const { search: word, setRecentSearch } = useSearchStore();
@@ -30,7 +31,7 @@ const WordDetail = () => {
     }
   }, [setRecentSearch, word, wordInfo]);
 
-  if (!word) return null;
+  if (!word) return <EmptySearch />;
 
   if (isLoading) {
     return <WordDetailLoading />;
