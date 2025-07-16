@@ -18,11 +18,14 @@ const SearchBox = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
     reset,
   } = useForm<SearchForm>({
     resolver: zodResolver(schema),
   });
+
+  const { search: query } = watch();
 
   const queryClient = useQueryClient();
   const { search, setSearch } = useSearchStore();
@@ -30,6 +33,8 @@ const SearchBox = () => {
   const onSubmit = (data: SearchForm) => {
     setSearch(data.search);
   };
+
+  const checkClear = search && search === query;
 
   const handleClear = () => {
     setSearch("");
@@ -41,11 +46,11 @@ const SearchBox = () => {
     <div className="space-y-4">
       <form onSubmit={handleSubmit(onSubmit)} className="relative w-full">
         <button
-          type={search ? "button" : "submit"}
-          onClick={search ? handleClear : undefined}
+          type={checkClear ? "button" : "submit"}
+          onClick={checkClear ? handleClear : undefined}
           className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5"
         >
-          {search ? (
+          {checkClear ? (
             <CircleX className="w-5 h-5 cursor-pointer" />
           ) : (
             <Search className="w-5 h-5" />
