@@ -8,14 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { fonts } from "@/constants";
 
 const FontSelector = () => {
-  const fonts = [
-    { font: "Inter", value: "font-inter" },
-    { font: "Noto Serif", value: "font-noto" },
-    { font: "Source Code Pro", value: "font-code" },
-  ];
-
   const { fontClass, setFontClass } = useFont();
 
   return (

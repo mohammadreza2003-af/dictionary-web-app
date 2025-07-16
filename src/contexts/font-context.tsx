@@ -17,7 +17,7 @@ const FontContext = createContext<FontContextType>({
 export const useFont = () => useContext(FontContext);
 
 export const FontProvider = ({ children }: { children: React.ReactNode }) => {
-  const [fontClass, setFontClassState] = useState("font-inter");
+  const [fontClass, setFontClassState] = useState("font-merriweather");
   const [isFontReady, setIsFontReady] = useState(false);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { inter, notoSerif, sourceCode } from "@/fonts/fonts";
+import { inter, merriweather, sourceCode } from "@/fonts/fonts";
 import Navbar from "../components/navbar";
 import Providers from "@/providers/providers";
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${notoSerif.variable} ${sourceCode.variable} antialiased`}
+        className={`${inter.variable} ${merriweather.variable} ${sourceCode.variable} antialiased`}
       >
         <Providers>
           <Navbar />

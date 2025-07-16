@@ -42,7 +42,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --font-inter: var(--font-inter);
-  --font-noto: var(--font-noto);
+  --font-merriweather: var(--font-merriweather);
   --font-code: var(--font-code);
 }
 
