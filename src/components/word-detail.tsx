@@ -4,8 +4,8 @@ import useSearchStore from "@/store";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWord } from "@/actions/api";
 import AudioPlayer from "./audio-palyer";
-import Image from "next/image";
 import { WordDetailLoading } from "./word-detail-loading";
+import NotFound from "./not-found";
 
 const WordDetail = () => {
   const { search: word } = useSearchStore();
@@ -28,12 +28,7 @@ const WordDetail = () => {
   }
 
   if (error || !wordInfo || (wordInfo.length === 0 && word.length > 0)) {
-    return (
-      <div className="flex flex-col items-center justify-center space-y-4 min-h-[60vh] text-center text-muted-foreground">
-        <Image src="/not-found.svg" alt="not-found" width={512} height={512} />
-        <p className="text-lg font-medium">Word not found.</p>
-      </div>
-    );
+    return <NotFound word={word} />;
   }
 
   const wordData = wordInfo[0];

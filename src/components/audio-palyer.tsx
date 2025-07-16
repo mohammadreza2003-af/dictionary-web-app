@@ -5,7 +5,7 @@ type AudioPlayerProps = {
   audio: string;
 };
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
+const AudioPlayer = ({ audio }: AudioPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
