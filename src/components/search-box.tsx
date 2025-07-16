@@ -7,6 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useSearchStore from "@/store";
 import { useQueryClient } from "@tanstack/react-query";
+import { Button } from "./ui/button";
 
 const schema = z.object({
   search: z.string().min(1, "Please enter a search term"),
@@ -19,6 +20,7 @@ const SearchBox = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
     reset,
   } = useForm<SearchForm>({
@@ -28,7 +30,7 @@ const SearchBox = () => {
   const { search: query } = watch();
 
   const queryClient = useQueryClient();
-  const { search, setSearch } = useSearchStore();
+  const { search, setSearch, recentSearch } = useSearchStore();
 
   const onSubmit = (data: SearchForm) => {
     setSearch(data.search);
@@ -40,6 +42,14 @@ const SearchBox = () => {
     setSearch("");
     reset();
     queryClient.removeQueries({ queryKey: ["definition"] });
+  };
+
+  const handleRecent = (word: string) => {
+    setSearch(word);
+    setValue("search", word, {
+      shouldDirty: true,
+      shouldValidate: true,
+    });
   };
 
   return (
@@ -64,6 +74,19 @@ const SearchBox = () => {
           className="!py-6"
         />
       </form>
+
+      <div className="flex gap-2 items-center">
+        {recentSearch.map((recent, index) => (
+          <Button
+            onClick={() => {
+              handleRecent(recent);
+            }}
+            key={index}
+          >
+            {recent}
+          </Button>
+        ))}
+      </div>
 
       {errors.search && (
         <p className="text-sm text-foreground">{errors.search.message}</p>

@@ -8,9 +8,10 @@ import { WordDetailLoading } from "./word-detail-loading";
 import NotFound from "./not-found";
 import Link from "next/link";
 import { HeartIcon } from "lucide-react";
+import { useEffect } from "react";
 
 const WordDetail = () => {
-  const { search: word } = useSearchStore();
+  const { search: word, setRecentSearch } = useSearchStore();
 
   const {
     data: wordInfo,
@@ -22,6 +23,12 @@ const WordDetail = () => {
     enabled: !!word,
     retry: false,
   });
+
+  useEffect(() => {
+    if (wordInfo) {
+      setRecentSearch(word);
+    }
+  }, [setRecentSearch, word, wordInfo]);
 
   if (!word) return null;
 

@@ -8,6 +8,5 @@ export async function fetchWord(word: string): Promise<DictionaryEntry[]> {
   if (!res.ok) {
     throw new Error("Word not found");
   }
-
   return res.json();
 }
