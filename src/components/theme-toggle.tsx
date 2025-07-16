@@ -6,8 +6,6 @@ import { Sun, Moon } from "lucide-react";
 export default function ThemeToggle() {
   const { theme, setTheme, systemTheme } = useTheme();
 
-  console.log(theme);
-
   const currentTheme = theme === "system" ? systemTheme : theme;
   const isDark = currentTheme === "dark";
 
