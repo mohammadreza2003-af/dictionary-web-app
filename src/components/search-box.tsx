@@ -46,7 +46,7 @@ const SearchBox = () => {
 
   const handleRecent = (word: string) => {
     setSearch(word);
-    setValue("search", word, {
+    setValue("search", word.toLowerCase(), {
       shouldDirty: true,
       shouldValidate: true,
     });

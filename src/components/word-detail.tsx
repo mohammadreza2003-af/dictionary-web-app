@@ -26,7 +26,7 @@ const WordDetail = () => {
 
   useEffect(() => {
     if (wordInfo) {
-      setRecentSearch(word);
+      setRecentSearch(word.toLowerCase());
     }
   }, [setRecentSearch, word, wordInfo]);
 
