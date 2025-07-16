@@ -1,6 +1,6 @@
 import { Book } from "lucide-react";
-import FontSelector from "./font-selector";
-import ThemeToggle from "./theme-toggle";
+import FontSelector from "@/components/font-selector";
+import ThemeToggle from "@/components/theme-toggle";
 const Navbar = () => {
   return (
     <nav className="md:max-w-3xl px-4 md:px-0 py-8 w-full mx-auto">

@@ -1,20 +1,45 @@
-// context/FontContext.tsx
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-const FontContext = createContext({
+type FontContextType = {
+  fontClass: string;
+  setFontClass: (value: string) => void;
+  isFontReady: boolean;
+};
+
+const FontContext = createContext<FontContextType>({
   fontClass: "font-inter",
-  setFontClass: (value: string) => {},
+  setFontClass: () => {},
+  isFontReady: false,
 });
 
 export const useFont = () => useContext(FontContext);
 
 export const FontProvider = ({ children }: { children: React.ReactNode }) => {
-  const [fontClass, setFontClass] = useState("font-inter");
+  const [fontClass, setFontClassState] = useState("font-inter");
+  const [isFontReady, setIsFontReady] = useState(false);
+
+  useEffect(() => {
+    const storedFont = localStorage.getItem("font");
+    if (storedFont) {
+      setFontClassState(storedFont);
+    }
+    setIsFontReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (isFontReady) {
+      localStorage.setItem("font", fontClass);
+    }
+  }, [fontClass, isFontReady]);
+
+  const setFontClass = (value: string) => {
+    setFontClassState(value);
+  };
 
   return (
-    <FontContext.Provider value={{ fontClass, setFontClass }}>
+    <FontContext.Provider value={{ fontClass, setFontClass, isFontReady }}>
       <div className={fontClass}>{children}</div>
     </FontContext.Provider>
   );

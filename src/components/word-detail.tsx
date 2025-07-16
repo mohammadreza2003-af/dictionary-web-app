@@ -29,8 +29,8 @@ const WordDetail = () => {
 
   if (error || !wordInfo || (wordInfo.length === 0 && word.length > 0)) {
     return (
-      <div className="flex flex-col items-center justify-center space-y-4 text-center text-muted-foreground">
-        <Image src="/not-found.png" alt="not-found" width={256} height={256} />
+      <div className="flex flex-col items-center justify-center space-y-4 min-h-[60vh] text-center text-muted-foreground">
+        <Image src="/not-found.svg" alt="not-found" width={512} height={512} />
         <p className="text-lg font-medium">Word not found.</p>
       </div>
     );
