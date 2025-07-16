@@ -7,7 +7,7 @@ import AudioPlayer from "./audio-palyer";
 import { WordDetailLoading } from "./word-detail-loading";
 import NotFound from "./not-found";
 import Link from "next/link";
-import { Heart, HeartHandshake, HeartIcon } from "lucide-react";
+import { HeartIcon } from "lucide-react";
 
 const WordDetail = () => {
   const { search: word } = useSearchStore();
