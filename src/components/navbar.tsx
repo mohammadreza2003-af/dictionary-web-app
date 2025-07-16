@@ -7,7 +7,8 @@ const Navbar = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Book size={32} />
-          <h2 className="font-semibold text-xl">Dictionary</h2>
+          <h2 className="font-semibold text-xl sm:block hidden">Dictionary</h2>
+          <h2 className="font-bold sm:hidden">Dic</h2>
         </div>
         <div className="flex items-center gap-4">
           <FontSelector />

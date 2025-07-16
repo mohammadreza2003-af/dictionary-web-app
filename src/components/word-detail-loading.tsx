@@ -8,7 +8,7 @@ export function WordDetailLoading() {
         .map((_, index) => (
           <Skeleton
             key={index}
-            className="md:h-[100px] w-[400px] h-[80px] md:w-[768px] rounded-xl"
+            className="md:h-[100px]  w-full h-[80px] md:w-[768px] rounded-xl"
           />
         ))}
     </div>
