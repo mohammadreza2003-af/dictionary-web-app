@@ -31,12 +31,17 @@ const SearchBox = () => {
   return (
     <div className="space-y-4">
       <form onSubmit={handleSubmit(onSubmit)} className="relative w-full">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
+        <button
+          type="submit"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5"
+        >
+          <Search className="w-5 h-5" />
+        </button>
         <Input
           {...register("search")}
           type="text"
           placeholder="Search a word"
-          className="pl-10 !py-6"
+          className="!py-6"
         />
       </form>
 
