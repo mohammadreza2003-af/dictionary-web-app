@@ -19,7 +19,7 @@ const useSearchStore = create<SearchState>((set) => ({
           : [
               value,
               ...state.recentSearch.filter((item) => item !== value),
-            ].slice(0, 5);
+            ].slice(0, 6);
 
       return { recentSearch: updatedRecent };
     }),
