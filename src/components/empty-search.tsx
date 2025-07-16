@@ -10,6 +10,9 @@ const EmptySearch = () => {
         height={512}
       />
       <p className="text-lg font-medium">Let’s find something cool ✨</p>
+      <p className="text-sm">
+        Start by typing a keyword in the search bar above
+      </p>
     </div>
   );
 };

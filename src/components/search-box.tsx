@@ -87,10 +87,6 @@ const SearchBox = () => {
           </Button>
         ))}
       </div>
-
-      {errors.search && (
-        <p className="text-sm text-foreground">{errors.search.message}</p>
-      )}
     </div>
   );
 };
